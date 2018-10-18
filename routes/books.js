@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
     let result = await Book.find().populate("author")
     res.status(200).json(result);
   } catch (error) {
-    next(new error(`unable to retrive all books from db`))
+    next(new Error(`unable to retrive all books from db`))
   }
 });
 
@@ -18,7 +18,7 @@ router.get("/:id", async (req, res, next) => {
     await Book.findById(req.params.id)
     res.status(200).json({ message: `get book with id ${req.params.id}` });
   } catch (error) {
-    next(new error(`unable to find book with title ${req.body.title}`))
+    next(new Error(`unable to find book with title ${req.body.title}`))
   }
 });
 
@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
     await newBook.save()
     res.status(201).json({ message: `created new book from ${req.body.title}` });
   } catch (error) {
-    next(new error(`unable to create book with title ${req.body.title}`))
+    next(new Error(`unable to create book with title ${req.body.title}`))
   }
 });
 
@@ -45,7 +45,7 @@ router.put("/:id", async (req, res, next) => {
     })
     res.status(200).json({ message: `update book with id ${req.body.title}` });
   } catch (error) {
-    next(new error(`unable to update book with title ${req.body.title}`))
+    next(new Error(`unable to update book with title ${req.body.title}`))
   }
 });
 
@@ -54,7 +54,7 @@ router.delete("/:id", async (req, res, next) => {
     await Book.findByIdAndDelete(req.params.id)
     res.status(200).json({ message: `deleted book with title ${req.body.title}` })
   } catch (error) {
-    next(new error(`unable to delete book with title ${req.body.title}`))
+    next(new Error(`unable to delete book with title ${req.body.title}`))
   }
 });
 

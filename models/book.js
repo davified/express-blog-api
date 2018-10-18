@@ -5,7 +5,12 @@ const bookSchema = Schema({
   title: { type: String },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "Author"
+    ref: "Author",
+    validate: {
+      validator(authorId) {
+        return Author.findById(authorId)
+      }
+    }
   },
   publised_year: { type: Number }
 });
