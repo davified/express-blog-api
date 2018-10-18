@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const authorSchema = Schema({
   name: { type: String },
-  occupation: { type: String },
+  verified: { type: String }
 });
 
 const Author = mongoose.model("Author", authorSchema)

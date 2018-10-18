@@ -14,7 +14,9 @@ const Author = require("./models/author")
 //routes
 const index = require("./routes/index");
 const books = require("./routes/books");
+const authors = require("./routes/authors");
 app.use("/", index);
 app.use("/books", books);
+app.use("/authors", authors);
 
 module.exports = app;
