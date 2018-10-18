@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Author = require("../models/author");
+const Book = require("../models/book");
 
 //GET > list all 
 router.get("/", async (req, res, next) => {
@@ -42,8 +43,9 @@ router.put("/:id", async (req, res, next) => {
 //GET with id
 router.get("/:id", async (req, res, next) => {
   try {
-    let result = await Author.findById(req.params.id)
-    res.status(200).json(result)
+    const book = await Book.find({ author: req.params.id })
+    const author = await Author.findById(req.params.id)
+    res.status(200).json({ author: author, book: book })
   } catch (error) {
     next(new Error(`unable to retrieve details for ${req.body.name}`))
   }

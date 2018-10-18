@@ -5,14 +5,9 @@ const bookSchema = Schema({
   title: { type: String },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "Author",
-    validate: {
-      validator(authorId) {
-        return Author.findById(authorId)
-      }
-    }
+    ref: "Author"
   },
-  publised_year: { type: Number }
+  published_year: { type: Number }
 });
 
 //create model

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Book = require("../models/book")
+const Book = require("../models/book");
 
 /* GET books listing. */
 router.get("/", async (req, res, next) => {
@@ -29,7 +29,7 @@ router.post("/", async (req, res, next) => {
       author: req.body.author,
       published_year: req.body.published_year
     })
-    await newBook.save()
+    await newBook.save();
     res.status(201).json({ message: `created new book from ${req.body.title}` });
   } catch (error) {
     next(new Error(`unable to create book with title ${req.body.title}`))
