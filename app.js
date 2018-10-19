@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+  require("donenv").load();
+}
 const express = require("express");
 const logger = require("morgan");
 
