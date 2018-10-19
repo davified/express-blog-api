@@ -47,7 +47,7 @@ router.get("/:id", async (req, res, next) => {
     const author = await Author.findById(req.params.id)
     res.status(200).json({ author: author, book: book })
   } catch (error) {
-    next(new Error(`unable to retrieve details for ${req.body.name}`))
+    next(new Error(`unable to retrieve details for ${req.params.id}`))
   }
 })
 
@@ -55,9 +55,9 @@ router.get("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     await Author.findByIdAndDelete(req.params.id)
-    res.status(200).json({ message: `successfully deleted details for ${req.body.name}` })
+    res.status(200).json({ message: `successfully deleted details` })
   } catch (error) {
-    next(new Error(`unable to delete details for ${req.body.name}`))
+    next(new Error(`unable to delete details for ${req.params.id}`))
   }
 })
 

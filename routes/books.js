@@ -52,7 +52,7 @@ router.put("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     await Book.findByIdAndDelete(req.params.id)
-    res.status(200).json({ message: `deleted book with title ${req.body.title}` })
+    res.status(200).json({ message: `deleted book successfully` })
   } catch (error) {
     next(new Error(`unable to delete book with title ${req.body.title}`))
   }
